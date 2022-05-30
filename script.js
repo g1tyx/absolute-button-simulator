@@ -17,7 +17,7 @@ function reset() {
 reset()
 
 function hardReset() {
-  if (confirm("Are you sure you want to reset? You will lose everything!")) {
+  if (confirm("您确定要重置吗？ 你将失去一切！")) {
     reset()
     save()
     location.reload()
@@ -33,21 +33,21 @@ setInterval(save, 5000)
 function exportGame() {
   save()
   navigator.clipboard.writeText(btoa(JSON.stringify(game))).then(function() {
-    alert("Copied to clipboard!")
+    alert("存档已复制到剪贴板!")
   }, function() {
-    alert("Error copying to clipboard, try again...")
+    alert("复制到剪贴板时出错，请重试...")
   });
 }
 
 function importGame() {
-  loadgame = JSON.parse(atob(prompt("Input your save here:")))
+  loadgame = JSON.parse(atob(prompt("粘贴你的存档")))
   if (loadgame && loadgame != null && loadgame != "") {
     reset()
     loadGame(loadgame)
     save()
   }
   else {
-    alert("Invalid input.")
+    alert("无效的存档.")
   }
 }
 
